@@ -1,0 +1,29 @@
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+	.wp-ext-service {
+		.service-grid {
+			display: flex;
+			flex-wrap: wrap;
+			.service {
+				width: 50%;
+				padding: 1rem;
+				.service-cover {
+					padding-right: 1rem;
+					a {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+				}
+			}
+		}
+	}
+	main {
+		.wp-ext-service {
+			.service-grid {
+				.service-grid {
+					flex-wrap: nowrap;
+				}
+			}
+		}
+	}
+}
