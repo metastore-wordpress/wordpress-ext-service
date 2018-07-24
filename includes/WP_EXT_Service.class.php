@@ -2,46 +2,40 @@
 
 /**
  * Class WP_EXT_Service
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 class WP_EXT_Service {
 
 	/**
 	 * Textdomain used for translation.
 	 *
 	 * @var string
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	protected $domain_ID;
 
 	/**
 	 * Post type name.
 	 *
 	 * @var string
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	protected $pt_ID;
 
 	/**
 	 * Post type archive name.
 	 *
 	 * @var string
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	protected $archive_ID;
 
 	/**
 	 * Post type capability type.
 	 *
 	 * @var string
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	protected $cap_type;
 
 	/**
 	 * Constructor.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function __construct() {
 		// Settings.
 		$this->pt_ID      = 'service';
@@ -58,15 +52,13 @@ class WP_EXT_Service {
 
 	/**
 	 * Plugin: `initialize`.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function run() {
 	}
 
 	/**
 	 * Plugin: `languages`.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function languages() {
 		load_plugin_textdomain(
 			'wp-ext-' . $this->domain_ID,
@@ -79,8 +71,7 @@ class WP_EXT_Service {
 	 * Post type: `capabilities`.
 	 *
 	 * @return array
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function capabilities() {
 		$capabilities = [
 			'edit_post'              => 'edit_' . $this->cap_type[0],
@@ -107,8 +98,7 @@ class WP_EXT_Service {
  * Helper function to retrieve the static object without using globals.
  *
  * @return WP_EXT_Service
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 function WP_EXT_Service() {
 	static $object;
 
@@ -121,6 +111,5 @@ function WP_EXT_Service() {
 
 /**
  * Initialize the object on `plugins_loaded`.
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 add_action( 'plugins_loaded', [ WP_EXT_Service(), 'run' ] );

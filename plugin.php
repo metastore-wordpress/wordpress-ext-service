@@ -19,7 +19,7 @@
 
 /**
  * Loading `WP_EXT_Service`.
- * ------------------------------------------------------------------------------------------------------------------ */
+ */
 
 function run_wp_ext_service() {
 	require_once( plugin_dir_path( __FILE__ ) . 'includes/WP_EXT_Service.class.php' );

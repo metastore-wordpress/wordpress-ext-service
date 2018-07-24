@@ -2,14 +2,12 @@
 
 /**
  * Class WP_EXT_Service_Taxonomy
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 class WP_EXT_Service_Taxonomy extends WP_EXT_Service {
 
 	/**
 	 * Constructor.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function __construct() {
 		parent::__construct();
 
@@ -18,16 +16,14 @@ class WP_EXT_Service_Taxonomy extends WP_EXT_Service {
 
 	/**
 	 * Plugin: `initialize`.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function run() {
 		add_action( 'init', [ $this, 'taxonomy_meta' ], 0 );
 	}
 
 	/**
 	 * Taxonomy: `service_meta`.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function taxonomy_meta() {
 		$labels  = [
 			'name'                       => _x( 'Service Meta', 'Meta General Name', 'wp-ext-' . $this->domain_ID ),
@@ -76,8 +72,7 @@ class WP_EXT_Service_Taxonomy extends WP_EXT_Service {
  * Helper function to retrieve the static object without using globals.
  *
  * @return WP_EXT_Service_Taxonomy
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 function WP_EXT_Service_Taxonomy() {
 	static $object;
 
@@ -90,6 +85,5 @@ function WP_EXT_Service_Taxonomy() {
 
 /**
  * Initialize the object on `plugins_loaded`.
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 add_action( 'plugins_loaded', [ WP_EXT_Service_Taxonomy(), 'run' ] );

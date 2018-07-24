@@ -2,14 +2,12 @@
 
 /**
  * Class WP_EXT_Service_ShortCode
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 class WP_EXT_Service_ShortCode extends WP_EXT_Service {
 
 	/**
 	 * Constructor.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function __construct() {
 		parent::__construct();
 
@@ -18,28 +16,24 @@ class WP_EXT_Service_ShortCode extends WP_EXT_Service {
 
 	/**
 	 * Plugin: `initialize`.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function run() {
 		add_shortcode( $this->archive_ID, [ $this, 'shortcode' ] );
 	}
 
 	/**
 	 * ShortCode.
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function shortcode( $atts, $content = null ) {
 
 		/**
 		 * Global variables.
-		 * ---------------------------------------------------------------------------------------------------------- */
-
+		 */
 		global $wp_query;
 
 		/**
 		 * Options.
-		 * ---------------------------------------------------------------------------------------------------------- */
-
+		 */
 		$defaults = [
 			'type' => '',
 		];
@@ -65,8 +59,7 @@ class WP_EXT_Service_ShortCode extends WP_EXT_Service {
 
 		/**
 		 * Rendering data.
-		 * ---------------------------------------------------------------------------------------------------------- */
-
+		 */
 		$wp_query = new WP_Query( $args );
 
 		if ( $wp_query->have_posts() ) {
@@ -88,8 +81,7 @@ class WP_EXT_Service_ShortCode extends WP_EXT_Service {
 
 		/**
 		 * Reset query.
-		 * ---------------------------------------------------------------------------------------------------------- */
-
+		 */
 		wp_reset_query();
 	}
 
@@ -97,8 +89,7 @@ class WP_EXT_Service_ShortCode extends WP_EXT_Service {
 	 * Render: `shortcode`.
 	 *
 	 * @return string
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public function shortcode_render() {
 		$cover = esc_html( get_field( $this->pt_ID . '_cover' ) );
 
@@ -121,8 +112,7 @@ class WP_EXT_Service_ShortCode extends WP_EXT_Service {
  * Helper function to retrieve the static object without using globals.
  *
  * @return WP_EXT_Service_ShortCode
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 function WP_EXT_Service_ShortCode() {
 	static $object;
 
@@ -135,6 +125,5 @@ function WP_EXT_Service_ShortCode() {
 
 /**
  * Initialize the object on `plugins_loaded`.
- * ------------------------------------------------------------------------------------------------------------------ */
-
+ */
 add_action( 'plugins_loaded', [ WP_EXT_Service_ShortCode(), 'run' ] );
